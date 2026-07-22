@@ -20,61 +20,43 @@ async function predictWeather(){
 
     document.getElementById("result").innerHTML="";
 
-    const response=await fetch(
+    const API = "https://weather-agent-68sn.onrender.com";
 
-        "http://127.0.0.1:8000/chat?query="+encodeURIComponent(query)
-
+    try {
+    const response = await fetch(
+        `${API}/chat?query=${encodeURIComponent(query)}`
     );
 
-    const data=await response.json();
+    const data = await response.json();
 
-    document.getElementById("loading").style.display="none";
+    document.getElementById("loading").style.display = "none";
 
-    if(!data.success){
-
-        document.getElementById("result").innerHTML=
-
-        `<div class="card">
-
-            ${data.error}
-
-        </div>`;
-
+    if (!data.success) {
+        document.getElementById("result").innerHTML =
+            `<div class="card">${data.error}</div>`;
         return;
-
     }
 
-    let emoji="🌤";
+    let emoji = "🌤";
 
-    if(data.prediction.temperature<15)
+    if (data.prediction.temperature < 15)
+        emoji = "❄";
+    else if (data.prediction.temperature > 30)
+        emoji = "🔥";
 
-        emoji="❄";
-
-    else if(data.prediction.temperature>30)
-
-        emoji="🔥";
-
-    document.getElementById("result").innerHTML=
-
-    `
-    <div class="card">
-
-        <div class="temp">
-
-            ${emoji} ${data.prediction.temperature}°C
-
+    document.getElementById("result").innerHTML = `
+        <div class="card">
+            <div class="temp">${emoji} ${data.prediction.temperature}°C</div>
+            <h2>${data.prediction.city}</h2>
+            <p><b>Date:</b> ${data.prediction.date}</p>
+            <p class="answer">${data.answer}</p>
         </div>
-
-        <h2>${data.prediction.city}</h2>
-
-        <p><b>Date:</b> ${data.prediction.date}</p>
-
-        <p class="answer">
-
-            ${data.answer}
-
-        </p>
-
-    </div>
     `;
+}
+catch (err) {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("result").innerHTML =
+        `<div class="card">⚠️ Unable to connect to the server.</div>`;
+    console.error(err);
+}
 }
