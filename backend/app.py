@@ -10,7 +10,10 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://weather-agent-68sn.onrender.com"],  # Live Server
+    allow_origins=[
+        "https://weather-agent-black.vercel.app",
+        "http://localhost:5500",  # for local development
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
