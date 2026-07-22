@@ -3,7 +3,7 @@
 An AI-powered Weather Prediction Agent that predicts future temperatures using a Machine Learning model trained on historical weather data. The application accepts natural language queries, extracts the required information using an LLM, predicts the temperature using a Random Forest Regression model, and generates a human-friendly response.
 
 ---
-
+Check it out here: https://weather-agent-black.vercel.app/
 ## 📌 Features
 
 - 🤖 Natural language weather queries
