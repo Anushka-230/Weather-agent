@@ -1,0 +1,12 @@
+.env
+
+__pycache__/
+*.pyc
+
+model/*.pkl
+
+*.joblib
+
+.vscode/
+
+.DS_Store

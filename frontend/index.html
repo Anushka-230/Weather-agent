@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Prediction Agent</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌤 Weather Prediction Agent</h1>
+
+    <p class="subtitle">
+        Ask any future weather question.
+    </p>
+
+    <textarea
+        id="query"
+        placeholder="What will be the temperature in Delhi on 1 January 2028?"></textarea>
+
+    <button onclick="predictWeather()">
+        Predict
+    </button>
+
+    <div id="loading">
+        Predicting...
+    </div>
+
+    <div id="result"></div>
+
+    <div class="examples">
+
+        <h3>Try asking</h3>
+
+        <ul>
+            <li onclick="fill(this)">
+                What will be the temperature in Puri on 15 July 2027?
+            </li>
+
+            <li onclick="fill(this)">
+                What will be the temperature in Mumbai on Christmas 2027?
+            </li>
+
+            <li onclick="fill(this)">
+                What will be the temperature in Delhi on 1 January 2028?
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
