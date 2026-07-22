@@ -20,7 +20,13 @@ app.add_middleware(
 def home():
     return {"message": "Weather Prediction API is running!"}
 
-
+@app.get("/cors-test")
+def cors_test():
+    return {
+        "origin_allowed": [
+            "https://weather-agent-black.vercel.app"
+        ]
+    }
 @app.get("/predict")
 def predict(city: str, month: int, day: int):
     temp = predict_temperature(city, month, day)
